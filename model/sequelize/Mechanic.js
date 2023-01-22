@@ -44,6 +44,29 @@ const Mechanic = sequelize.define('Mechanic', {
                 msg: "This field must be between 200 and 1,000,000"
             },
         }
+    }, phone: {
+        type: Sequelize.STRING, allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            },
+            is: {
+                args: /^(\+?)(\d{11}|\d{9})$/,
+                msg: "Should be a phone number"
+            }
+
+        }
+
+    }
+    , password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty:{
+                msg:"This field is required"
+            }
+
+        }
     }
 });
 

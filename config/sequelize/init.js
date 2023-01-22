@@ -1,5 +1,5 @@
 const sequelize = require('./sequelize');
-
+const authUtil= require('../../util/authUtils');
 const Car = require('../../model/sequelize/Car');
 const Mechanic = require('../../model/sequelize/Mechanic');
 const ServiceAppointment = require('../../model/sequelize/ServiceAppointment');
@@ -58,10 +58,11 @@ module.exports = () => {
         })
         .then(mechs => {
             if (!mechs || mechs.length == 0) {
+                passHash=authUtil.hashPassword("1234");
                 return Mechanic.bulkCreate([
-                    {firstName: 'Johnny', lastName: 'Oliver', salary: 1900},
-                    {firstName: 'Jenny', lastName: 'Bendo', salary: 2100},
-                    {firstName: 'James', lastName: 'Bundo', salary: 2500}
+                    {firstName: 'Johnny', lastName: 'Oliver', salary: 1900,phone:"+48555555555",password:passHash},
+                    {firstName: 'Jenny', lastName: 'Bendo', salary: 2100,phone:"+48444444444",password:passHash},
+                    {firstName: 'James', lastName: 'Bundo', salary: 2500,phone:"+48333333333",password:passHash}
                 ])
                     .then(() => {
                         return Mechanic.findAll();

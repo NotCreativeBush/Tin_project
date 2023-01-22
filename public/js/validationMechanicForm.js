@@ -2,13 +2,18 @@ function validateForm() {
     const firstNameInput = document.getElementById("firstName");
     const lastNameInput = document.getElementById("lastName");
     const salaryInput = document.getElementById("salary");
+    const phoneInput = document.getElementById("phone");
+    const passwordInput = document.getElementById("password");
 
     const errorFirstName = document.getElementById("errorFirstName");
     const errorLastName = document.getElementById("errorLastName");
     const errorSalary = document.getElementById("errorSalary");
-    const errorSummary = document.getElementById("errorSummary")
+    const errorPhone=document.getElementById("errorPhone");
+    const errorPassword=document.getElementById("errorPassword");
 
-    resetErrors([firstNameInput, lastNameInput, salaryInput], [errorFirstName, errorLastName, errorSalary], errorSummary);
+    const errorSummary = document.getElementById("errorSummary");
+
+    resetErrors([firstNameInput, lastNameInput, salaryInput,passwordInput], [errorFirstName, errorLastName, errorSalary,errorPassword], errorSummary);
 
     let valid = true;
 
@@ -48,6 +53,22 @@ function validateForm() {
         valid = false;
         salaryInput.classList.add("error-input");
         errorSalary.innerText = "This field must be between 200 and 1,000,000";
+    }
+
+    if(!checkRequired(phoneInput.value)){
+        valid=false;
+        phoneInput.classList.add("error-input");
+        errorPhone.innerText="The field is required.";
+    }else if(!checkPhone(phoneInput.value)){
+        valid=false;
+        phoneInput.classList.add("error-input");
+        errorPhone.innerText="This field should be a phone number."
+    }
+
+    if(!checkRequired(passwordInput.value)){
+        valid=false;
+        passwordInput.classList.add("error-input");
+        errorPassword.innerText="The field is required.";
     }
 
     if (!valid) {

@@ -36,6 +36,26 @@
             <% } %>
         </span>
 
+        <label for="phone">Phone: <span class="symbol-required">*</span></label>
+        <input type="text" name="phone" id="phone" value="<%= mechanic.phone %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e=>e.path.includes('phone')) ? 'error-input' : ''%>" placeholder="+48123123123 or 534534534">
+        <span id="errorPhone" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('phone'))) { %>
+                <%= validationErrors.find(e => e.path.includes('phone')).message %>
+            <% } %>
+        </span>
+
+        <label for="password">Password: <span class="symbol-required">*</span></label>
+        <input type="password" name="password" id="password" value="<%= mechanic.password %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e=>e.path.includes('password')) ? 'error-input' : ''%>" placeholder="">
+        <span id="errorPassword" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('password'))) { %>
+                <%= validationErrors.find(e => e.path.includes('password')).message %>
+            <% } %>
+        </span>
+
         <div class="form-buttons">
             <p id="errorSummary" class="error-text"></p>
             <% if (formMode == 'showDetails') { %>

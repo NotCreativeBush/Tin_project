@@ -56,7 +56,7 @@ function validateForm() {
         valid=false;
         phoneInput.classList.add("error-input");
         errorPhone.innerText="The field is required.";
-    }if(!checkPhone(phoneInput.value)){
+    }else if(!checkPhone(phoneInput.value)){
         valid=false;
         phoneInput.classList.add("error-input");
         errorPhone.innerText="This field should be a phone number."

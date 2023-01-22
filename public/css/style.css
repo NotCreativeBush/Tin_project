@@ -251,6 +251,7 @@ textarea{
 .form input[type="number"],
 .form input[type="date"],
 .form input[type="email"],
+.form input[type="password"],
 .form input[type="time"]{
     border: 1px solid #7f8c8d;
     color: #2c3e50;

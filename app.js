@@ -18,6 +18,9 @@ sequalizeInit().catch(err=>{
 const carApiRouter=require('./routes/api/CarApiRoute');
 const mechanicApiRouter=require('./routes/api/MechanicApiRoute');
 const serviceAppointmentApiRouter=require('./routes/api/ServiceAppointmentApiRoute');
+const session=require('express-session');
+const authUtil=require('./util/authUtils');
+
 
 var app = express();
 
@@ -32,10 +35,24 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+    secret: 'my_beloved_password',
+    resave: false
+}));
+
+app.use((req, res, next) => {
+    const loggedUser = req.session.loggedUser;
+    res.locals.loggedUser=loggedUser;
+    if(!res.locals.loginError){
+        res.locals.loginError = undefined;
+    }
+    next();
+});
+
 app.use('/', indexRouter);
-app.use('/mechanics', mechanicRouter);
-app.use('/car', carRouter);
-app.use('/serviceappointment', serviceAppointmentRouter);
+app.use('/mechanics', authUtil.permitAuthenticatedUser,mechanicRouter);
+app.use('/car',authUtil.permitAuthenticatedUser, carRouter);
+app.use('/serviceappointment',authUtil.permitAuthenticatedUser, serviceAppointmentRouter);
 
 app.use('/api/cars',carApiRouter);
 app.use('/api/mechanics',mechanicApiRouter);

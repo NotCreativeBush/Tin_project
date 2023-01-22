@@ -25,7 +25,9 @@ exports.createMechanic = (newMechData) => {
     return Mechanic.create({
         firstName: newMechData.firstName,
         lastName: newMechData.lastName,
-        salary: newMechData.salary
+        salary: newMechData.salary,
+        phone: newMechData.phone,
+        password: newMechData.password
     });
 
 };
@@ -34,6 +36,8 @@ exports.updateMechanic = (mechId, mechData) => {
     const firstName = mechData.firstName;
     const lastName = mechData.lastName;
     const salary = mechData.salary;
+    const phone = mechData.phone;
+    const password= mechData.password;
 
     return Mechanic.update(mechData, {where: {_id: mechId}});
 };
@@ -41,5 +45,11 @@ exports.updateMechanic = (mechId, mechData) => {
 exports.deleteMechanic = (mechId) => {
     return Mechanic.destroy({
         where: {_id: mechId}
+    });
+};
+
+exports.findByPhone = (phone) => {
+    return Mechanic.findOne({
+        where: {phone: phone}
     });
 };

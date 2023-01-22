@@ -15,9 +15,28 @@
 <nav>
     <ul>
         <li><a href="/" class="<%= navLocation=='main' ? 'active' :  ''%>">Main Page</a></li>
+        <% if(loggedUser) { %>
         <li><a href="/car" class="<%= navLocation=='cars' ? 'active' :  ''%>">Car</a></li>
         <li><a href="/mechanics" class="<%= navLocation=='mechanics' ? 'active' :  ''%>">Mechanic</a></li>
         <li><a href="/serviceappointment" class="<%= navLocation=='serviceappointment' ? 'active' :  ''%>">Service Appointment</a></li>
+        <% } %>
     </ul>
 </nav>
+<% if(!loggedUser) { %>
+    <div id="login">
+        <h5>Log in</h5>
+        <form method="post" action="/login" novalidate>
+            <label for="loginPhone">Phone:</label>
+            <input type="text" id="loginPhone" name="phone">
 
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password">
+
+            <input type="submit" value="Sign in">
+            <span id="loginErrors"><%= loginError ? loginError : ''%></span>
+        </form>
+    </div>
+<% } else { %>
+<span>You are logged in as: <%=loggedUser.firstName + " " + loggedUser.lastName%></span>
+<a href="/logout">Sign out</a>
+<% } %>
