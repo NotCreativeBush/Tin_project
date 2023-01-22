@@ -1,0 +1,50 @@
+const Sequelize = require('sequelize');
+const sequelize = require('../../config/sequelize/sequelize');
+
+const Mechanic = sequelize.define('Mechanic', {
+    _id: {
+        type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, primaryKey: true
+    }, firstName: {
+        type: Sequelize.STRING, allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            },
+            len: {
+                args: [2, 60],
+                msg: "The field should contain between 2 and 60 characters."
+            },
+        }
+    }, lastName: {
+        type: Sequelize.STRING, allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            },
+            len: {
+                args: [2, 60],
+                msg: "The field should contain between 2 and 60 characters."
+            },
+        }
+    }, salary: {
+        type: Sequelize.INTEGER, allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            },
+            isNumeric: {
+                msg: "The field should be a number"
+            },
+            min: {
+                args: [200],
+                msg: "This field must be between 200 and 1,000,000"
+            },
+            max: {
+                args: [1000000],
+                msg: "This field must be between 200 and 1,000,000"
+            },
+        }
+    }
+});
+
+module.exports = Mechanic;

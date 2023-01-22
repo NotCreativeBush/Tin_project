@@ -1,0 +1,97 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationServiceAppointmentForm.js"></script>
+    <h2><%= pageTitle %></h2>
+    <p>Fields with * are required.</p>
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="_id" value="<%= serviceAppointment._id %>">
+
+
+        <label for="car_id">Customer: <span class="symbol-required">*</span></label>
+
+        <select name="car_id" id="car_id" <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                class="<%= validationErrors.find(e => e.path.includes('car_id')) ? 'error-input' : '' %>">
+            <option value="" selected>-- Choose customer --</option>
+            <% for (let i = 0; i < allCars.length; i++) { let c = allCars[i]; %>
+            <option value="<%= c._id %>" label="<%= c.manufacturer + ' ' + c.model + ' ' + c.customerName %>"
+                    <%= (c._id == serviceAppointment.car_id) ? 'selected' : '' %>></option>
+            <% } %>
+        </select>
+
+        <span id="errorCustomer" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('car_id'))) { %>
+                <%= validationErrors.find(e => e.path.includes('car_id')).message %>
+            <% } %>
+        </span>
+
+        <label for="mechanic_id">Mechanic: <span class="symbol-required">*</span></label>
+        <select name="mechanic_id" id="mechanic_id" <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                class="<%= validationErrors.find(e => e.path.includes('mechanic_id')) ? 'error-input' : '' %>">
+            <option value="" selected>-- Choose mechanic --</option>
+            <% for (let i = 0; i < allMechanics.length; i++) { let m = allMechanics[i]; %>
+            <option value="<%= m._id %>" label="<%= m.firstName + ' ' + m.lastName %>"
+                    <%= (m._id == serviceAppointment.mechanic_id) ? 'selected' : '' %>></option>
+            <% } %>
+        </select>
+        <span id="errorMechanic" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('mechanic_id'))) { %>
+                <%= validationErrors.find(e => e.path.includes('mechanic_id')).message %>
+            <% } %>
+        </span>
+
+        <label for="price">Price: <span class="symbol-required">*</span></label>
+        <input type="text" name="price" id="price" value="<%= serviceAppointment.price %>" placeholder="50-100000"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('price')) ? 'error-input' : '' %>">
+        <span id="errorPrice" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('price'))) { %>
+                <%= validationErrors.find(e => e.path.includes('price')).message %>
+            <% } %>
+        </span>
+
+        <label for="date">Date: <span class="symbol-required">*</span></label>
+        <input type="date" name="date" id="date" value="<%= serviceAppointment.date %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('date')) ? 'error-input' : '' %>">
+        <span id="errorDate" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('date'))) { %>
+                <%= validationErrors.find(e => e.path.includes('date')).message %>
+            <% } %>
+        </span>
+
+
+        <label for="timeslot">Time: <span class="symbol-required">*</span></label>
+        <input type="time" name="timeslot" id="timeslot" value="<%= serviceAppointment.timeslot %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('timeslot')) ? 'error-input' : '' %>">
+        <span id="errorTime" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('timeslot'))) { %>
+                <%= validationErrors.find(e => e.path.includes('timeslot')).message %>
+            <% } %>
+        </span>
+
+        <label for="discount">Discount: <span class="symbol-required">*</span></label>
+        <input type="text" name="discount" id="discount" value="<%= serviceAppointment.discount %>" placeholder="0-100"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('discount')) ? 'error-input' : '' %>">
+        <span id="errorDiscount" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('discount'))) { %>
+                <%= validationErrors.find(e => e.path.includes('discount')).message %>
+            <% } %>
+        </span>
+
+        <div class="form-buttons">
+            <p id="errorSummary" class="error-text"></p>
+            <% if (formMode == 'showDetails') { %>
+                <a href="/serviceappointment/edit/<%= serviceAppointment._id %>" class="button-edit">Edit</a>
+                <a class="form-button-cancel" href="/serviceappointment">Return</a>
+            <% } else { %>
+
+                <input class="form-button-submit" type="submit" value="<%= btnLabel %>">
+                <a class="form-button-cancel"
+                   href="/serviceappointment">Cancel</a>
+            <% } %>
+        </div>
+    </form>
+</main>
+<%- include('../../fragment/footer.ejs') %>

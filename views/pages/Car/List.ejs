@@ -1,0 +1,45 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <h2>Cars</h2>
+    <table class="table-list">
+        <tr>
+            <th class="tablehide">Manufacturer</th>
+            <th>Model</th>
+            <th>Plates</th>
+            <th>Phone of customer</th>
+            <th class="tablehide">Name of customer</th>
+            <th>Actions</th>
+        </tr>
+        <tbody>
+        <% for (let car of cars) { %>
+            <tr>
+                <td class="tablehide"><%= car.manufacturer %></td>
+                <td><%= car.model %></td>
+                <td><%= car.plates %></td>
+                <td><%= car.phone %></td>
+                <td class="tablehide"><%= car.customerName%></td>
+
+                <td>
+                    <ul class="list-actions">
+                        <li>
+                            <a href="/car/details/<%=car._id%>"
+                               class="list-actions-button-details">Details</a>
+                        </li>
+                        <li>
+                            <a href="/car/edit/<%=car._id%>"
+                               class="list-actions-button-edit">Edit</a>
+                        </li>
+                        <li>
+                            <a href="/car/delete/<%=car._id%>"
+                               class="list-actions-button-delete">Delete</a>
+                        </li>
+                    </ul>
+                </td>
+
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <p><a href="/car/add" class="button-add">Add new car</a></p>
+</main>
+<%- include('../../fragment/footer.ejs') %>
