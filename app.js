@@ -32,8 +32,18 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(cookieParser());
+app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+const i18n = require('i18n');
+i18n.configure({
+    locales: ['pl', 'en'], // languages available in the application. Create a separate dictionary for each of them
+    directory: path.join(__dirname, 'locales'), // path to the directory where the dictionaries are located
+    objectNotation: true, // enables the use of nested keys in object notation
+    cookie: 'acme-hr-lang', //the name of the cookie that our application will use to store information about the language currently selected by the user
+});
+app.use(i18n.init); //initialization and connection to the application context
 
 app.use(session({
     secret: 'my_beloved_password',

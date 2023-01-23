@@ -13,7 +13,7 @@ function validateForm() {
 
     const errorSummary = document.getElementById("errorSummary");
 
-    resetErrors([firstNameInput, lastNameInput, salaryInput,passwordInput], [errorFirstName, errorLastName, errorSalary,errorPassword], errorSummary);
+    resetErrors([firstNameInput, lastNameInput, salaryInput,passwordInput], [errorFirstName, errorLastName, errorSalary,errorPasswordm], errorSummary);
 
     let valid = true;
 
