@@ -11,9 +11,19 @@ exports.comparePasswords = (passPlain, passHash) => {
     return res;
 }
 
-exports.permitAuthenticatedUser= (req, res, next)=>{
-    const loggedUser=req.session.loggedUser;
-    if(loggedUser){
+exports.permitAuthenticatedMechanic = (req, res, next) => {
+    const loggedUser = req.session.loggedUser;
+    const loggedUserType=req.session.loggedUserType;
+    if (loggedUserType === "Mechanic"|| loggedUserType==="Manager") {
+        next();
+    } else {
+        throw new Error('unauthorized access');
+    }
+}
+exports.permitAuthenticatedManager = (req, res, next) => {
+    const loggedUser = req.session.loggedUser;
+    const loggedUserType=req.session.loggedUserType;
+    if (loggedUserType === "Manager") {
         next();
     } else {
         throw new Error('unauthorized access');

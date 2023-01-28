@@ -2,7 +2,8 @@ const Car = require("../../model/sequelize/Car");
 const Mechanic = require("../../model/sequelize/Mechanic");
 const ServiceAppointment = require("../../model/sequelize/ServiceAppointment");
 
-
+;
+const authUtil = require("../../util/authUtils");
 
 exports.getMechanics = () => {
     return Mechanic.findAll();
@@ -27,7 +28,7 @@ exports.createMechanic = (newMechData) => {
         lastName: newMechData.lastName,
         salary: newMechData.salary,
         phone: newMechData.phone,
-        password: newMechData.password
+        password: authUtil.hashPassword(newMechData.password)
     });
 
 };
@@ -37,8 +38,9 @@ exports.updateMechanic = (mechId, mechData) => {
     const lastName = mechData.lastName;
     const salary = mechData.salary;
     const phone = mechData.phone;
-    const password= mechData.password;
 
+    const password= authUtil.hashPassword(mechData.password);
+    mechData.password=password;
     return Mechanic.update(mechData, {where: {_id: mechId}});
 };
 

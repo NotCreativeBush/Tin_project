@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 const mechanicRouter = require('./routes/mechanicRoute');
 const carRouter = require("./routes/carRoute");
 const serviceAppointmentRouter = require('./routes/serviceAppointmentRoute');
+const managerRouter = require('./routes/managerRoute');
 
 const sequalizeInit = require('./config/sequelize/init');
 sequalizeInit().catch(err=>{
@@ -18,6 +19,8 @@ sequalizeInit().catch(err=>{
 const carApiRouter=require('./routes/api/CarApiRoute');
 const mechanicApiRouter=require('./routes/api/MechanicApiRoute');
 const serviceAppointmentApiRouter=require('./routes/api/ServiceAppointmentApiRoute');
+const managerApiRouter=require('./routes/api/ManagerApiRoute');
+
 const session=require('express-session');
 const authUtil=require('./util/authUtils');
 
@@ -52,7 +55,9 @@ app.use(session({
 
 app.use((req, res, next) => {
     const loggedUser = req.session.loggedUser;
+    const loggedUserType=req.session.loggedUserType;
     res.locals.loggedUser=loggedUser;
+    res.locals.loggedUserType=loggedUserType;
     if(!res.locals.loginError){
         res.locals.loginError = undefined;
     }
@@ -60,13 +65,15 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/mechanics', authUtil.permitAuthenticatedUser,mechanicRouter);
-app.use('/car',authUtil.permitAuthenticatedUser, carRouter);
-app.use('/serviceappointment',authUtil.permitAuthenticatedUser, serviceAppointmentRouter);
+app.use('/mechanics', authUtil.permitAuthenticatedManager,mechanicRouter);
+app.use('/car',authUtil.permitAuthenticatedMechanic, carRouter);
+app.use('/serviceappointment',authUtil.permitAuthenticatedMechanic, serviceAppointmentRouter);
+app.use('/managers',authUtil.permitAuthenticatedManager, managerRouter);
 
 app.use('/api/cars',carApiRouter);
 app.use('/api/mechanics',mechanicApiRouter);
 app.use('/api/serviceappointment',serviceAppointmentApiRouter);
+app.use('/api/managers', managerApiRouter)
 
 
 // catch 404 and forward to error handler

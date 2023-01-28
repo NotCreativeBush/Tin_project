@@ -3,6 +3,8 @@ const authUtil= require('../../util/authUtils');
 const Car = require('../../model/sequelize/Car');
 const Mechanic = require('../../model/sequelize/Mechanic');
 const ServiceAppointment = require('../../model/sequelize/ServiceAppointment');
+const Manager=require('../../model/sequelize/Manager');
+
 
 module.exports = () => {
     Car.hasMany(ServiceAppointment, {
@@ -73,6 +75,17 @@ module.exports = () => {
         })
         .then(mechs => {
             allMechanics = mechs;
+            return Manager.findAll();
+        })
+        .then(manags => {
+            if(!manags || manags.length==0){
+                passHash=authUtil.hashPassword("1234");
+                return Manager.bulkCreate([
+                    {firstName: 'Jenny', lastName: 'Anderson', salary: 5500,phone:"+48111111111",password:passHash}
+                ])
+            }
+        })
+        .then(manags=>{
             return ServiceAppointment.findAll();
         })
         .then(appts => {

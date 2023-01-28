@@ -1,0 +1,42 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <h2>Managers</h2>
+    <table class="table-list">
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Salary</th>
+            <th>Phone</th>
+            <th>Actions</th>
+
+        </tr>
+        <tbody>
+        <% for (let manager of managers) { %>
+            <tr>
+                <td><%= manager.firstName %></td>
+                <td><%= manager.lastName %></td>
+                <td><%= manager.salary %></td>
+                <td><%= manager.phone %></td>
+                <td>
+                    <ul class="list-actions">
+                        <li>
+                            <a href="/managers/details/<%= manager._id%>"
+                               class="list-actions-button-details">Details</a>
+                        </li>
+                        <li>
+                            <a href="/managers/edit/<%= manager._id%>"
+                               class="list-actions-button-edit">Edit</a>
+                        </li>
+                        <li>
+                            <a href="/managers/delete/<%= manager._id%>" class="list-actions-button-delete">Delete</a>
+                        </li>
+                    </ul>
+                </td>
+
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <p><a href="/managers/add" class="button-add">Add new manager</a></p>
+</main>
+<%- include('../../fragment/footer.ejs') %>

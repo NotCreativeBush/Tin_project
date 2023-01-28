@@ -1,0 +1,74 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationManagerForm.js"></script>
+    <h2><%= pageTitle %></h2>
+    <p>Fields with * are required.</p>
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="_id" value="<%= manager._id %>">
+
+        <label for="firstName">Name: <span class="symbol-required">*</span></label>
+        <input type="text" name="firstName" id="firstName" value="<%= manager.firstName %>" placeholder="2-60 characters"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e=>e.path.includes('firstName')) ? 'error-input' : ''%>">
+        <span id="errorFirstName" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('firstName'))) { %>
+                <%= validationErrors.find(e => e.path.includes('firstName')).message %>
+            <% } %>
+        </span>
+
+        <label for="lastName">Surname: <span class="symbol-required">*</span></label>
+        <input type="text" name="lastName" id="lastName" value="<%= manager.lastName %>" placeholder="2-60 characters"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e=>e.path.includes('lastName')) ? 'error-input' : ''%>">
+        <span id="errorLastName" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('lastName'))) { %>
+                <%= validationErrors.find(e => e.path.includes('lastName')).message %>
+            <% } %>
+        </span>
+
+        <label for="salary">Salary: <span class="symbol-required">*</span></label>
+        <input type="text" name="salary" id="salary" value="<%= manager.salary %>" placeholder="200-1,000,000"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e=>e.path.includes('salary')) ? 'error-input' : ''%>">
+        <span id="errorSalary" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('salary'))) { %>
+                <%= validationErrors.find(e => e.path.includes('salary')).message %>
+            <% } %>
+        </span>
+
+        <label for="phone">Phone: <span class="symbol-required">*</span></label>
+        <input type="text" name="phone" id="phone" value="<%= manager.phone %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e=>e.path.includes('phone')) ? 'error-input' : ''%>" placeholder="+48123123123 or 534534534">
+        <span id="errorPhone" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('phone'))) { %>
+                <%= validationErrors.find(e => e.path.includes('phone')).message %>
+            <% } %>
+        </span>
+
+        <label for="password">Password: <span class="symbol-required">*</span></label>
+        <input type="password" name="password" id="password" value="<%= manager.password %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e=>e.path.includes('password')) ? 'error-input' : ''%>" placeholder="">
+        <span id="errorPassword" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('password'))) { %>
+                <%= validationErrors.find(e => e.path.includes('password')).message %>
+            <% } %>
+        </span>
+
+        <div class="form-buttons">
+            <p id="errorSummary" class="error-text"></p>
+            <% if (formMode == 'showDetails') { %>
+                <a href="/managers/edit/<%= manager._id %>" class="button-edit">Edit</a>
+                <a class="form-button-cancel" href="/managers">Return</a>
+            <% } else { %>
+
+                <input class="form-button-submit" type="submit" value="<%= btnLabel %>">
+                <a class="form-button-cancel"
+                   href="/managers">Cancel</a>
+            <% } %>
+        </div>
+    </form>
+
+</main>
+<%- include('../../fragment/footer.ejs') %>
