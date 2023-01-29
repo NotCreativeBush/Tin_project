@@ -1,13 +1,13 @@
 <%- include('../../fragment/header.ejs') %>
 <main>
-    <h2>Mechanics</h2>
+    <h2><%= __('mechanic.list.title')%></h2>
     <table class="table-list">
         <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Salary</th>
-            <th>Phone</th>
-            <th>Actions</th>
+            <th><%= __('mechanic.fields.name')%></th>
+            <th><%= __('mechanic.fields.surname')%></th>
+            <th><%= __('mechanic.fields.salary')%></th>
+            <th><%= __('mechanic.fields.phone')%></th>
+            <th><%= __('list.actions.title')%></th>
         </tr>
         <tbody>
         <% for (let mechanic of mechanics) { %>
@@ -20,14 +20,14 @@
                     <ul class="list-actions">
                         <li>
                             <a href="/mechanics/details/<%= mechanic._id%>"
-                               class="list-actions-button-details">Details</a>
+                               class="list-actions-button-details"><%= __('list.actions.details')%></a>
                         </li>
                         <li>
                             <a href="/mechanics/edit/<%= mechanic._id%>"
-                               class="list-actions-button-edit">Edit</a>
+                               class="list-actions-button-edit"><%= __('list.actions.edit')%></a>
                         </li>
                         <li>
-                            <a href="/mechanics/delete/<%= mechanic._id%>" class="list-actions-button-delete">Delete</a>
+                            <a href="/mechanics/delete/<%= mechanic._id%>" class="list-actions-button-delete"><%= __('list.actions.delete')%></a>
                         </li>
                     </ul>
                 </td>
@@ -36,6 +36,6 @@
         <% } %>
         </tbody>
     </table>
-    <p><a href="/mechanics/add" class="button-add">Add new mechanic</a></p>
+    <p><a href="/mechanics/add" class="button-add"><%= __('mechanic.list.addNew')%></a></p>
 </main>
 <%- include('../../fragment/footer.ejs') %>

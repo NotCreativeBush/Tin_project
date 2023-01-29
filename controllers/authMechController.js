@@ -15,7 +15,7 @@ exports.login = (req, res, next) => {
                                 loginError: "Invalid phone or password."
                             })
                         } else if (authUtil.comparePasswords(password, manag.password) === true) {
-                            manag.typeOfUser='Manager';
+
                             req.session.loggedUser = manag;
                             req.session.loggedUserType = "Manager";
 
@@ -33,7 +33,7 @@ exports.login = (req, res, next) => {
 
 
             } else if (authUtil.comparePasswords(password, mech.password) === true) {
-                mech.typeOfUser='Mechanic';
+
                 req.session.loggedUser = mech;
                 req.session.loggedUserType = "Mechanic";
 

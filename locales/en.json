@@ -1,12 +1,15 @@
 {
   "main-page": {
-    "content": "Main Page"
+    "content": "Main Page",
+    "header1": "Car Service"
   },
   "nav": {
     "main": "Main page",
     "cars": "Car",
     "mechanics": "Mechanic",
-    "serviceappointment": "Service Appointment"
+    "serviceappointment": "Service Appointment",
+    "managers": "Managers",
+    "partsOrder": "Parts Orders"
   },
   "list": {
     "actions": {
@@ -23,34 +26,188 @@
       "cancel": "Cancel"
     }
   },
-  "emp": {
+  "car": {
     "fields": {
-      "firstName": "First name",
-      "lastName": "Last name",
-      "email": "Email"
+      "manufacturer": "Manufacturer",
+      "model": "Model",
+      "plates": "Plates",
+      "phone": "Phone of customer",
+      "name": "Name of customer",
+      "actions": "Actions"
     },
     "list": {
-      "title": "Employees",
-      "addNew": "Add new employee",
-      "noData": "No employees in database",
-      "pageTitle": "List of employees"
+      "title": "Cars",
+      "addNew": "Add new car",
+      "noData": "No cars in database",
+      "pageTitle": "List of cars"
     },
     "form": {
-      "employment": "History of employment",
+      "services": "Service appointments",
       "add": {
-        "pageTitle": "Adding a new employee",
-        "btnLabel": "Add the employee",
+        "pageTitle": "Adding a new car",
+        "btnLabel": "Add the car",
         "confirm": {
           "header": "Confirmation",
-          "text": "The new employee has been successfully created"
+          "text": "The new car has been successfully created"
         }
       },
       "edit": {
-        "pageTitle": "Editing an employee",
+        "pageTitle": "Editing a car",
         "btnLabel": "Save changes",
         "confirm": {
           "header": "Confirmation",
-          "text": "The employee has been successfully updated"
+          "text": "The car has been successfully updated"
+        }
+      },
+      "details": {
+        "pageTitle": "Details of a car",
+        "btnLabel": "Go to edit",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The car has been successfully updated"
+        }
+      }
+    }
+  },
+  "manager": {
+    "fields": {
+      "name": "Name",
+      "surname": "Surname",
+      "salary": "Salary",
+      "phone": "Phone"
+    },
+    "list": {
+      "title": "Managers",
+      "addNew": "Add new manager",
+      "noData": "No managers in database",
+      "pageTitle": "List of managers"
+    },
+    "form": {
+      "services": "Service appointments",
+      "add": {
+        "pageTitle": "Adding a new manager",
+        "btnLabel": "Add the manager",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The new manager has been successfully created"
+        }
+      },
+      "edit": {
+        "pageTitle": "Editing a manager",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The manager has been successfully updated"
+        }
+      },
+      "details": {
+        "pageTitle": "Details of a manager",
+        "btnLabel": "Go to edit",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The manager has been successfully updated"
+        }
+      }
+    }
+  },
+  "mechanic": {
+    "fields": {
+      "name": "Name",
+      "surname": "Surname",
+      "salary": "Salary",
+      "phone": "Phone"
+    },
+    "list": {
+      "title": "Mechanic",
+      "addNew": "Add new mechanic",
+      "noData": "No mechanics in database",
+      "pageTitle": "List of managers"
+    },
+    "form": {
+      "services": "Service appointments",
+      "add": {
+        "pageTitle": "Adding a new mechanic",
+        "btnLabel": "Add the mechanic",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The new manager has been successfully created"
+        }
+      },
+      "edit": {
+        "pageTitle": "Editing a mechanic",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The mechanic has been successfully updated"
+        }
+      }
+    }
+  },
+  "partsOrder": {
+    "fields": {
+      "partname": "Part Name",
+      "mechanic": "Mechanic",
+      "amount": "Amount",
+      "status": "Status"
+    },
+    "list": {
+      "title": "Parts Orders",
+      "addNew": "Add new part order",
+      "noData": "No part orders in database",
+      "pageTitle": "List of part orders",
+      "statusedit": "Change status"
+    },
+    "form": {
+      "services": "Service appointments",
+      "add": {
+        "pageTitle": "Adding a new part order",
+        "btnLabel": "Add the part order",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The new part order has been successfully created"
+        }
+      },
+      "edit": {
+        "pageTitle": "Editing a part order",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The part order has been successfully updated"
+        }
+      }
+    }
+  },
+  "serviceappointment": {
+    "fields": {
+      "customername": "Customer Name",
+      "mechanicname": "Mechanic Name",
+      "mechanicsurname": "Mechanic Surname",
+      "price": "Price",
+      "Date": "Date",
+      "Time": "Time",
+      "Discount": "Discount"
+    },
+    "list": {
+      "title": "Service Appointment",
+      "addNew": "Add new Service Appointment",
+      "noData": "No service appointments in database",
+      "pageTitle": "List of service appointments"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Adding a new service appointment",
+        "btnLabel": "Add the service appointment",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The new service appointment has been successfully created"
+        }
+      },
+      "edit": {
+        "pageTitle": "Editing a service appointment",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The service appointment has been successfully updated"
         }
       }
     }

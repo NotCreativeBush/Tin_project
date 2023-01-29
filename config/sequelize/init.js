@@ -4,7 +4,7 @@ const Car = require('../../model/sequelize/Car');
 const Mechanic = require('../../model/sequelize/Mechanic');
 const ServiceAppointment = require('../../model/sequelize/ServiceAppointment');
 const Manager=require('../../model/sequelize/Manager');
-
+const PartsOrder=require('../../model/sequelize/PartsOrder');
 
 module.exports = () => {
     Car.hasMany(ServiceAppointment, {
@@ -21,6 +21,13 @@ module.exports = () => {
         onDelete: 'CASCADE'
     });
     ServiceAppointment.belongsTo(Mechanic, {as: 'mechanic', foreignKey: {name: 'mechanic_id', allowNull: false}});
+    Mechanic.hasMany(PartsOrder, {
+        as: 'parts',
+        foreignKey: {name: 'mechanic_id', allowNull: false},
+        constraints: true,
+        onDelete: 'CASCADE'
+    });
+    PartsOrder.belongsTo(Mechanic, {as: 'mechanic', foreignKey: {name: 'mechanic_id', allowNull: false}});
 
     let allCars, allMechanics;
     return sequelize
@@ -86,6 +93,19 @@ module.exports = () => {
             }
         })
         .then(manags=>{
+            return PartsOrder.findAll();
+        })
+        .then(parts =>{
+            if(!parts || parts.length==0){
+                return PartsOrder.bulkCreate([
+                    {partName: "wheel",mechanic_id:allMechanics[0]._id,amount:4},
+                    {partName: "brakes",mechanic_id: allMechanics[1]._id,amount: 10},
+                    {partName: "bumper",mechanic_id: allMechanics[2]._id,amount: 20}
+                ])
+            }
+        })
+        .then(parts => {
+
             return ServiceAppointment.findAll();
         })
         .then(appts => {

@@ -1,13 +1,13 @@
 <%- include('../../fragment/header.ejs') %>
 <main>
-    <h2>Managers</h2>
+    <h2><%= __('manager.list.title')%></h2>
     <table class="table-list">
         <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Salary</th>
-            <th>Phone</th>
-            <th>Actions</th>
+            <th><%= __('manager.fields.name')%></th>
+            <th><%= __('manager.fields.surname')%></th>
+            <th><%= __('manager.fields.salary')%></th>
+            <th><%= __('manager.fields.phone')%></th>
+            <th><%= __('list.actions.title')%></th>
 
         </tr>
         <tbody>
@@ -21,14 +21,14 @@
                     <ul class="list-actions">
                         <li>
                             <a href="/managers/details/<%= manager._id%>"
-                               class="list-actions-button-details">Details</a>
+                               class="list-actions-button-details"><%= __('list.actions.details')%></a>
                         </li>
                         <li>
                             <a href="/managers/edit/<%= manager._id%>"
-                               class="list-actions-button-edit">Edit</a>
+                               class="list-actions-button-edit"><%= __('list.actions.edit')%></a>
                         </li>
                         <li>
-                            <a href="/managers/delete/<%= manager._id%>" class="list-actions-button-delete">Delete</a>
+                            <a href="/managers/delete/<%= manager._id%>" class="list-actions-button-delete"><%= __('list.actions.delete')%></a>
                         </li>
                     </ul>
                 </td>
@@ -37,6 +37,6 @@
         <% } %>
         </tbody>
     </table>
-    <p><a href="/managers/add" class="button-add">Add new manager</a></p>
+    <p><a href="/managers/add" class="button-add"><%= __('manager.list.addNew')%></a></p>
 </main>
 <%- include('../../fragment/footer.ejs') %>

@@ -10,6 +10,7 @@ const mechanicRouter = require('./routes/mechanicRoute');
 const carRouter = require("./routes/carRoute");
 const serviceAppointmentRouter = require('./routes/serviceAppointmentRoute');
 const managerRouter = require('./routes/managerRoute');
+const partsOrderRouter=require('./routes/partsOrderRoute');
 
 const sequalizeInit = require('./config/sequelize/init');
 sequalizeInit().catch(err=>{
@@ -20,6 +21,7 @@ const carApiRouter=require('./routes/api/CarApiRoute');
 const mechanicApiRouter=require('./routes/api/MechanicApiRoute');
 const serviceAppointmentApiRouter=require('./routes/api/ServiceAppointmentApiRoute');
 const managerApiRouter=require('./routes/api/ManagerApiRoute');
+const partsOrderApiRouter=require('./routes/api/PartsOrderApiRoute');
 
 const session=require('express-session');
 const authUtil=require('./util/authUtils');
@@ -64,22 +66,33 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => {
+    if(!res.locals.lang) {
+        const currentLang = req.cookies['acme-hr-lang'];
+        res.locals.lang = currentLang;
+    }
+    next();
+});
+
 app.use('/', indexRouter);
-app.use('/mechanics', authUtil.permitAuthenticatedManager,mechanicRouter);
+app.use('/mechanics', authUtil.permitAuthenticatedMechanic,mechanicRouter);
 app.use('/car',authUtil.permitAuthenticatedMechanic, carRouter);
 app.use('/serviceappointment',authUtil.permitAuthenticatedMechanic, serviceAppointmentRouter);
-app.use('/managers',authUtil.permitAuthenticatedManager, managerRouter);
+app.use('/managers', authUtil.permitAuthenticatedManager, managerRouter);
+app.use('/partsOrder', authUtil.permitAuthenticatedMechanic, partsOrderRouter);
 
 app.use('/api/cars',carApiRouter);
 app.use('/api/mechanics',mechanicApiRouter);
 app.use('/api/serviceappointment',serviceAppointmentApiRouter);
 app.use('/api/managers', managerApiRouter)
+app.use('/api/partsOrder', partsOrderApiRouter);
 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
 });
+
 
 // error handler
 app.use(function (err, req, res, next) {

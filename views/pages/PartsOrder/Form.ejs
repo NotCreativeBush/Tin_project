@@ -1,0 +1,72 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationServiceAppointmentForm.js"></script>
+    <h2><%= pageTitle %></h2>
+    <p>Fields with * are required.</p>
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="_id" value="<%= partsOrder._id %>">
+
+
+        <label for="partName">Part Name: <span class="symbol-required">*</span></label>
+        <input type="text" name="partName" id="partName" value="<%= partsOrder.partName %>" placeholder="2-60 characters"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e=>e.path.includes('partName')) ? 'error-input' : ''%>">
+        <span id="errorFirstName" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('partName'))) { %>
+                <%= validationErrors.find(e => e.path.includes('partName')).message %>
+            <% } %>
+        </span>
+
+        <label for="mechanic_id">Mechanic: <span class="symbol-required">*</span></label>
+        <select name="mechanic_id" id="mechanic_id" <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                class="<%= validationErrors.find(e => e.path.includes('mechanic_id')) ? 'error-input' : '' %>">
+            <option value="" selected>-- Choose mechanic --</option>
+            <% for (let i = 0; i < allMechanics.length; i++) { let m = allMechanics[i]; %>
+            <option value="<%= m._id %>" label="<%= m.firstName + ' ' + m.lastName %>"
+                    <%= (m._id == partsOrder.mechanic_id) ? 'selected' : '' %>></option>
+            <% } %>
+        </select>
+        <span id="errorMechanic" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('mechanic_id'))) { %>
+                <%= validationErrors.find(e => e.path.includes('mechanic_id')).message %>
+            <% } %>
+        </span>
+
+        <label for="amount">Amount: <span class="symbol-required">*</span></label>
+        <input type="text" name="amount" id="amount" value="<%= partsOrder.amount %>" placeholder="1-1000"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('amount')) ? 'error-input' : '' %>">
+        <span id="errorPrice" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('amount'))) { %>
+                <%= validationErrors.find(e => e.path.includes('amount')).message %>
+            <% } %>
+        </span>
+
+        <label for="status">Status: </label>
+        <input type="checkbox" name="status" id="status" value="true"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('status')) ? 'error-input' : '' %>">
+        <span id="errorDate" class="error-text">
+            <% if(validationErrors.find(e => e.path.includes('status'))) { %>
+                <%= validationErrors.find(e => e.path.includes('status')).message %>
+            <% } %>
+        </span>
+
+
+
+
+        <div class="form-buttons">
+            <p id="errorSummary" class="error-text"></p>
+            <% if (formMode == 'showDetails') { %>
+                <a href="/partsOrder/edit/<%= partsOrder._id %>" class="button-edit">Edit</a>
+                <a class="form-button-cancel" href="/partsOrder">Return</a>
+            <% } else { %>
+
+                <input class="form-button-submit" type="submit" value="<%= btnLabel %>">
+                <a class="form-button-cancel"
+                   href="/partsOrder">Cancel</a>
+            <% } %>
+        </div>
+    </form>
+</main>
+<%- include('../../fragment/footer.ejs') %>

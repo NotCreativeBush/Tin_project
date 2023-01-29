@@ -5,7 +5,8 @@ exports.showManagerList = (req, res, next) => {
         .then(manags => {
             res.render('pages/managers/list', {
                 managers: manags,
-                navLocation: "managers"
+                navLocation: "managers",
+                pageTitle: req.__('manager.list.pageTitle')
             });
         })
 
@@ -16,9 +17,9 @@ exports.showManagerList = (req, res, next) => {
 exports.showAddManagerForm = (req, res, next) => {
     res.render('pages/managers/form', {
         manager: {},
-        pageTitle: 'New manager',
+        pageTitle: req.__('manager.form.add.pageTitle'),
         formMode: 'createNew',
-        btnLabel: 'Add Manager',
+        btnLabel: req.__('manager.form.add.btnLabel'),
         formAction: '/managers/add',
         navLocation: "managers",
         validationErrors: []
@@ -32,9 +33,9 @@ exports.showEditManagerForm = (req, res, next) => {
         .then(manager => {
                 res.render('pages/managers/form', {
                     manager: manager,
-                    pageTitle: 'Edit manager',
+                    pageTitle: req.__('manager.form.edit.pageTitle'),
                     formMode: 'edit',
-                    btnLabel: 'Edit Manager',
+                    btnLabel: req.__('manager.form.edit.btnLabel'),
                     formAction: '/managers/edit',
                     navLocation: "managers",
                     validationErrors: []
@@ -50,7 +51,7 @@ exports.showManagerDetails = (req, res, next) => {
         .then(manager => {
                 res.render('pages/managers/form', {
                     manager: manager,
-                    pageTitle: 'Manager details',
+                    pageTitle: req.__('manager.form.details.pageTitle'),
                     formMode: 'showDetails',
                     formAction: '',
                     navLocation: "managers",
@@ -70,9 +71,9 @@ exports.addManager = (req, res, next) => {
 
             res.render('pages/managers/form', {
                 manager: managData,
-                pageTitle: "Adding a manager",
+                pageTitle: req.__('manager.form.add.pageTitle'),
                 formMode: "createNew",
-                btnLabel: 'Add manager',
+                btnLabel: req.__('manager.form.add.btnLabel'),
                 formAction: '/managers/add',
                 navLocation: "managers",
                 validationErrors: err.errors
@@ -93,9 +94,9 @@ exports.updateManager = (req, res, next) => {
 
                         res.render('pages/managers/form', {
                             manager: managData,
-                            pageTitle: 'Edit manager',
+                            pageTitle: req.__('manager.form.edit.pageTitle'),
                             formMode: 'edit',
-                            btnLabel: 'Edit Manager',
+                            btnLabel: req.__('manager.form.edit.btnLabel'),
                             formAction: '/managers/edit',
                             navLocation: "managers",
                             validationErrors: err.errors

@@ -1,0 +1,51 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <h2><%= __('partsOrder.list.title') %></h2>
+    <table class="table-list">
+        <tr>
+            <th><%= __('partsOrder.fields.partname') %></th>
+            <th><%= __('partsOrder.fields.mechanic') %></th>
+            <th><%= __('partsOrder.fields.amount') %></th>
+            <th><%= __('partsOrder.fields.status') %></th>
+            <th><%= __('list.actions.title') %></th>
+        </tr>
+        <tbody>
+        <% for (let part of partsOrder) { %>
+            <tr>
+                <td><%= part.partName %></td>
+                <td><%= part.mechanic.firstName %></td>
+                <td><%= part.amount %></td>
+                <td><%= part.status %></td>
+                <td>
+                    <ul class="list-actions">
+                        <% if (loggedUserType === "Manager"){ %>
+                            <li>
+                                <a href="/partsOrder/details/<%= part._id %>"
+                                   class="list-actions-button-details"><%= __('list.actions.details') %></a>
+                            </li>
+                            <li>
+                                <a href="/partsOrder/edit/<%= part._id %>"
+                                   class="list-actions-button-edit"><%= __('list.actions.edit') %></a>
+                            </li>
+                            <li>
+                                <a href="/partsOrder/delete/<%= part._id %>"
+                                   class="list-actions-button-delete"><%= __('list.actions.delete') %></a>
+                            </li>
+                        <% } else { %>
+                            <li>
+                                <a href="/partsOrder/editstatus/<%= part._id %>"
+                                   class="list-actions-button-edit"><%= __('partsOrder.list.statusedit') %></a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </td>
+
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <% if (loggedUserType === "Manager"){ %>
+        <p><a href="/partsOrder/add" class="button-add"><%= __('partsOrder.list.addNew') %></a></p>
+    <% } %>
+</main>
+<%- include('../../fragment/footer.ejs') %>

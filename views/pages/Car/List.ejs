@@ -1,14 +1,14 @@
 <%- include('../../fragment/header.ejs') %>
 <main>
-    <h2>Cars</h2>
+    <h2><%= __('car.list.title')%></h2>
     <table class="table-list">
         <tr>
-            <th class="tablehide">Manufacturer</th>
-            <th>Model</th>
-            <th>Plates</th>
-            <th>Phone of customer</th>
-            <th class="tablehide">Name of customer</th>
-            <th>Actions</th>
+            <th class="tablehide"><%= __('car.fields.manufacturer')%></th>
+            <th><%= __('car.fields.model')%></th>
+            <th><%= __('car.fields.plates')%></th>
+            <th><%= __('car.fields.phone')%></th>
+            <th class="tablehide"><%= __('car.fields.name')%></th>
+            <th><%= __('car.fields.actions')%></th>
         </tr>
         <tbody>
         <% for (let car of cars) { %>
@@ -23,15 +23,15 @@
                     <ul class="list-actions">
                         <li>
                             <a href="/car/details/<%=car._id%>"
-                               class="list-actions-button-details">Details</a>
+                               class="list-actions-button-details"><%= __('list.actions.details')%></a>
                         </li>
                         <li>
                             <a href="/car/edit/<%=car._id%>"
-                               class="list-actions-button-edit">Edit</a>
+                               class="list-actions-button-edit"><%= __('list.actions.edit')%></a>
                         </li>
                         <li>
                             <a href="/car/delete/<%=car._id%>"
-                               class="list-actions-button-delete">Delete</a>
+                               class="list-actions-button-delete"><%= __('list.actions.delete')%></a>
                         </li>
                     </ul>
                 </td>
@@ -40,6 +40,6 @@
         <% } %>
         </tbody>
     </table>
-    <p><a href="/car/add" class="button-add">Add new car</a></p>
+    <p><a href="/car/add" class="button-add"><%= __('car.list.addNew')%></a></p>
 </main>
 <%- include('../../fragment/footer.ejs') %>

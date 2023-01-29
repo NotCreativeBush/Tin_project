@@ -1,58 +1,77 @@
 {
-  "main-page": {
-    "content": "Strona główna"
-  },
-  "nav": {
-    "main-page": "Strona główna",
-    "employees": "Pracownicy",
-    "departments": "Departamenty",
-    "employments": "Zatrudnienie"
-  },
-  "list": {
-    "actions": {
-      "title": "Akcje",
-      "details": "Szczegóły",
-      "edit": "Edytuj",
-      "delete": "Usuń"
-    }
-  },
-  "form": {
-    "actions": {
-      "return": "Powrót",
-      "edit": "Edytuj",
-      "cancel": "Anuluj"
-    }
-  },
-  "emp": {
-    "fields": {
-      "firstName": "Imię",
-      "lastName": "Nazwisko",
-      "email": "Email"
-    },
-    "list": {
-      "title": "Pracownicy",
-      "addNew": "Dodaj nowego pracownika",
-      "noData": "Brak pracowników w bazie",
-      "pageTitle": "Lista pracowników"
-    },
-    "form": {
-      "employment": "Historia zatrudnienia",
-      "add": {
-        "pageTitle": "Dodawanie pracownika",
-        "btnLabel": "Dodaj pracownika",
-        "confirm": {
-          "header": "Potwierdzenie operacji",
-          "text": "Pomyślnie dodano pracownika"
-        }
-      },
-      "edit": {
-        "pageTitle": "Edycja pracownika",
-        "btnLabel": "Zapisz zmiany",
-        "confirm": {
-          "header": "Potwierdzenie operacji",
-          "text": "Pomyślnie zaktualizowano pracownika"
-        }
-      }
-    }
-  }
+	"main-page": {
+		"content": "Strona główna",
+		"header1": "main-page.header1"
+	},
+	"nav": {
+		"main-page": "Strona główna",
+		"employees": "Pracownicy",
+		"departments": "Departamenty",
+		"employments": "Zatrudnienie",
+		"main": "nav.main",
+		"cars": "nav.cars",
+		"partsOrder": "nav.partsOrder",
+		"serviceappointment": "nav.serviceappointment",
+		"mechanics": "nav.mechanics",
+		"managers": "nav.managers"
+	},
+	"list": {
+		"actions": {
+			"title": "Akcje",
+			"details": "Szczegóły",
+			"edit": "Edytuj",
+			"delete": "Usuń"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Powrót",
+			"edit": "Edytuj",
+			"cancel": "Anuluj"
+		}
+	},
+	"emp": {
+		"fields": {
+			"firstName": "Imię",
+			"lastName": "Nazwisko",
+			"email": "Email"
+		},
+		"list": {
+			"title": "Pracownicy",
+			"addNew": "Dodaj nowego pracownika",
+			"noData": "Brak pracowników w bazie",
+			"pageTitle": "Lista pracowników"
+		},
+		"form": {
+			"employment": "Historia zatrudnienia",
+			"add": {
+				"pageTitle": "Dodawanie pracownika",
+				"btnLabel": "Dodaj pracownika",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano pracownika"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja pracownika",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano pracownika"
+				}
+			}
+		}
+	},
+	"partsOrder": {
+		"fields": {
+			"partname": "partsOrder.fields.partname",
+			"mechanic": "partsOrder.fields.mechanic",
+			"amount": "partsOrder.fields.amount",
+			"status": "partsOrder.fields.status"
+		},
+		"list": {
+			"title": "partsOrder.list.title",
+			"addNew": "partsOrder.list.addNew"
+		}
+	}
 }

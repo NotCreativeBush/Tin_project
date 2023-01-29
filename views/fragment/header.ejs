@@ -9,21 +9,33 @@
 </head>
 <body>
 <header>
-    <h1>Car Service</h1>
+    <h1><%= __('main-page.header1') %></h1>
     <img src="/images/logo.png" alt="Car Service Logo">
 </header>
 <nav>
     <ul>
-        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : '' %>">Main Page</a></li>
+        <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : '' %>">PL</a></li>
+        <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : '' %>">EN</a></li>
+    </ul>
+
+    <ul>
+        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : '' %>"><%= __('nav.main') %></a></li>
         <% if(loggedUser) { %>
-            <li><a href="/car" class="<%= navLocation == 'cars' ? 'active' : '' %>">Cars</a></li>
-            <li><a href="/serviceappointment" class="<%= navLocation == 'serviceappointment' ? 'active' : '' %>">Service
-                    Appointments</a></li>
-
+            <li><a href="/car" class="<%= navLocation == 'cars' ? 'active' : '' %>"><%= __('nav.cars') %></a></li>
+            <li><a href="/serviceappointment"
+                   class="<%= navLocation == 'serviceappointment' ? 'active' : '' %>"><%= __('nav.serviceappointment') %></a>
+            </li>
+            <% if(loggedUserType === "Mechanic") { %>
+                <li><a href="/partsOrder/mechaniclist"
+                       class="<%= navLocation == 'partsOrders' ? 'active' : '' %>"><%= __('nav.partsOrder') %></a></li>
+            <% } %>
             <% if (loggedUserType === 'Manager'){ %>
-                <li><a href="/mechanics" class="<%= navLocation == 'mechanics' ? 'active' : '' %>">Mechanics</a></li>
-
-                <li><a href="/managers" class="<%= navLocation == 'managers' ? 'active' : '' %>">Managers</a></li>
+                <li><a href="/mechanics"
+                       class="<%= navLocation == 'mechanics' ? 'active' : '' %>"><%= __('nav.mechanics') %></a></li>
+                <li><a href="/partsOrder"
+                       class="<%= navLocation == 'partsOrders' ? 'active' : '' %>"><%= __('nav.partsOrder') %></a></li>
+                <li><a href="/managers"
+                       class="<%= navLocation == 'managers' ? 'active' : '' %>"><%= __('nav.managers') %></a></li>
         <% }} %>
     </ul>
 </nav>

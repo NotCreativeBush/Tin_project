@@ -1,16 +1,16 @@
 <%- include('../../fragment/header.ejs') %>
 <main>
-    <h2>Service appointments</h2>
+    <h2><%= __('serviceappointment.list.title')%></h2>
     <table class="table-list">
         <tr>
-            <th class="tablehide">Customer Name</th>
-            <th class="tablehide">Mechanic Name</th>
-            <th>Mechanic Surname</th>
-            <th class="tablehide">Price</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th class="tablehide">Discount</th>
-            <th>Actions</th>
+            <th class="tablehide"><%= __('serviceappointment.fields.customername')%></th>
+            <th class="tablehide"><%= __('serviceappointment.fields.mechanicname')%></th>
+            <th><%= __('serviceappointment.fields.mechanicsurname')%></th>
+            <th class="tablehide"><%= __('serviceappointment.fields.price')%></th>
+            <th><%= __('serviceappointment.fields.Date')%></th>
+            <th><%= __('serviceappointment.fields.Time')%></th>
+            <th class="tablehide"><%= __('serviceappointment.fields.Discount')%></th>
+            <th><%= __('list.actions.title')%></th>
         </tr>
         <tbody>
         <% for (let appt of serviceAppointment) { %>
@@ -26,15 +26,15 @@
                     <ul class="list-actions">
                         <li>
                             <a href="/serviceappointment/details/<%=appt._id%>"
-                               class="list-actions-button-details">Details</a>
+                               class="list-actions-button-details"><%= __('list.actions.details')%></a>
                         </li>
                         <li>
                             <a href="/serviceappointment/edit/<%=appt._id%>"
-                               class="list-actions-button-edit">Edit</a>
+                               class="list-actions-button-edit"><%= __('list.actions.edit')%></a>
                         </li>
                         <li>
                             <a href="/serviceappointment/delete/<%=appt._id%>"
-                               class="list-actions-button-delete">Delete</a>
+                               class="list-actions-button-delete"><%= __('list.actions.delete')%></a>
                         </li>
                     </ul>
                 </td>
@@ -43,6 +43,6 @@
         <% } %>
         </tbody>
     </table>
-    <p><a href="/serviceappointment/add" class="button-add">Add new service appointment</a></p>
+    <p><a href="/serviceappointment/add" class="button-add"><%= __('serviceappointment.list.addNew')%></a></p>
 </main>
 <%- include('../../fragment/footer.ejs') %>

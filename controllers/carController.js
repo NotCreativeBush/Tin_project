@@ -4,7 +4,8 @@ exports.showCarList = (req, res, next) => {
         .then(cars => {
             res.render('pages/car/list', {
                 cars: cars,
-                navLocation: 'cars'
+                navLocation: 'cars',
+                pageTitle: req.__('car.list.pageTitle')
             });
 
         });
@@ -14,9 +15,9 @@ exports.showCarList = (req, res, next) => {
 exports.showAddCarForm = (req, res, next) => {
     res.render('pages/car/form', {
         car: {},
-        pageTitle: 'New car',
+        pageTitle: req.__('car.form.add.pageTitle'),
         formMode: 'createNew',
-        btnLabel: 'Add car',
+        btnLabel: req.__('car.form.add.btnLabel'),
         formAction: '/car/add',
         navLocation: "cars",
         validationErrors: []
@@ -29,9 +30,9 @@ exports.showEditCarForm = (req, res, next) => {
         .then(car => {
                 res.render('pages/car/form', {
                     car: car,
-                    pageTitle: 'Edit car',
+                    pageTitle: req.__('car.form.edit.pageTitle'),
                     formMode: 'edit',
-                    btnLabel: 'Edit car',
+                    btnLabel: req.__('car.form.edit.btnLabel'),
                     formAction: '/car/edit',
                     navLocation: "cars",
                     validationErrors: []
@@ -46,7 +47,7 @@ exports.showCarDetails = (req, res, next) => {
         .then(car => {
                 res.render('pages/car/form', {
                     car: car,
-                    pageTitle: 'Car Details',
+                    pageTitle: req.__('car.form.details.pageTitle'),
                     formMode: 'showDetails',
                     formAction: '',
                     navLocation: "cars",
@@ -66,9 +67,9 @@ exports.addCar = (req, res, next) => {
 
             res.render('pages/car/form', {
                 car: carData,
-                pageTitle: 'New car',
+                pageTitle: req.__('car.form.add.pageTitle'),
                 formMode: 'createNew',
-                btnLabel: 'Add car',
+                btnLabel: req.__('car.form.add.btnLabel'),
                 formAction: '/car/add',
                 navLocation: "cars",
                 validationErrors: err.errors
@@ -90,9 +91,9 @@ exports.updateCar = (req, res, next) => {
                     carData.service=result.service;
                     res.render('pages/car/form', {
                         car: carData,
-                        pageTitle: 'Edit car',
+                        pageTitle:  req.__('car.form.edit.pageTitle'),
                         formMode: 'edit',
-                        btnLabel: 'Edit car',
+                        btnLabel: req.__('car.form.edit.btnLabel'),
                         formAction: '/car/edit',
                         navLocation: "cars",
                         validationErrors: err.errors
