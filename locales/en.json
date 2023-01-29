@@ -121,7 +121,7 @@
       "title": "Mechanic",
       "addNew": "Add new mechanic",
       "noData": "No mechanics in database",
-      "pageTitle": "List of managers"
+      "pageTitle": "List of mechanics"
     },
     "form": {
       "services": "Service appointments",
@@ -135,6 +135,14 @@
       },
       "edit": {
         "pageTitle": "Editing a mechanic",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The mechanic has been successfully updated"
+        }
+      },
+      "details": {
+        "pageTitle": "Details of a mechanic",
         "btnLabel": "Save changes",
         "confirm": {
           "header": "Confirmation",
@@ -155,7 +163,8 @@
       "addNew": "Add new part order",
       "noData": "No part orders in database",
       "pageTitle": "List of part orders",
-      "statusedit": "Change status"
+      "statustrue": "Change status to true",
+      "statusfalse": "Change status to false"
     },
     "form": {
       "services": "Service appointments",
@@ -169,6 +178,14 @@
       },
       "edit": {
         "pageTitle": "Editing a part order",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The part order has been successfully updated"
+        }
+      },
+      "details": {
+        "pageTitle": "Details of a part order",
         "btnLabel": "Save changes",
         "confirm": {
           "header": "Confirmation",
@@ -209,7 +226,29 @@
           "header": "Confirmation",
           "text": "The service appointment has been successfully updated"
         }
+      },
+      "details": {
+        "pageTitle": "Details of a service appointment",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The service appointment has been successfully updated"
+        }
       }
     }
+  },
+  "error": {
+    "emptyString": "The field is required.",
+    "stringLen2to60": "The field should contain between 2 and 60 characters.",
+    "stringLen2to10": "The field should contain between 2 and 10 characters.",
+    "notAPhone": "Should be a phone number",
+    "notANumber": "The field should be a number",
+    "number200to1000000": "This field must be between 200 and 1,000,000",
+    "notADate": "Should be a date",
+    "notATime": "This field should be time",
+    "number0to100": "This field must be between 0 and 100",
+    "number1to1000": "This field must be between 1 and 1,000",
+    "summary": "Form contains errors."
   }
+
 }

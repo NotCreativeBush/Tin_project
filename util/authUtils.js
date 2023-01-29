@@ -13,8 +13,8 @@ exports.comparePasswords = (passPlain, passHash) => {
 
 exports.permitAuthenticatedMechanic = (req, res, next) => {
     const loggedUser = req.session.loggedUser;
-    const loggedUserType=req.session.loggedUserType;
-    if (loggedUserType === "Mechanic"|| loggedUserType==="Manager") {
+    const loggedUserType = req.session.loggedUserType;
+    if (loggedUser && (loggedUserType === "Mechanic" || loggedUserType === "Manager")) {
         next();
     } else {
         throw new Error('unauthorized access');
@@ -22,8 +22,8 @@ exports.permitAuthenticatedMechanic = (req, res, next) => {
 }
 exports.permitAuthenticatedManager = (req, res, next) => {
     const loggedUser = req.session.loggedUser;
-    const loggedUserType=req.session.loggedUserType;
-    if (loggedUserType === "Manager") {
+    const loggedUserType = req.session.loggedUserType;
+    if (loggedUser && loggedUserType === "Manager") {
         next();
     } else {
         throw new Error('unauthorized access');

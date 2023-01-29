@@ -11,44 +11,44 @@ const ServiceAppointment = sequelize.define('ServiceAppointment', {
             type: Sequelize.INTEGER, allowNull: false,
             validate: {
                 notEmpty: {
-                    msg: "The field is required."
+                    msg: "error.emptyString"
                 },
-                isNumeric: {msg: "Should be a number"}
+                isNumeric: {msg: "error.notANumber"}
             }
         }, mechanic_id: {
             type: Sequelize.INTEGER, allowNull: false,
             validate: {
                 notEmpty: {
-                    msg: "The field is required."
+                    msg: "error.emptyString"
                 },
-                isNumeric: {msg: "Should be a number"}
+                isNumeric: {msg: "error.notANumber"}
             }
         }, price: {
             type: Sequelize.INTEGER, allowNull: false,
             validate: {
                 notEmpty: {
-                    msg: "The field is required."
+                    msg: "error.emptyString"
                 },
-                isNumeric: {msg: "Should be a number"}
+                isNumeric: {msg: "error.notANumber"}
             }
         }, date: {
             type: Sequelize.DATEONLY, allowNull: false,
             validate: {
                 notEmpty: {
-                    msg: "The field is required."
+                    msg: "error.emptyString"
                 },
-                isDate: {msg: "Should be a date"}
+                isDate: {msg: "error.notADate"}
             }
 
         }, timeslot: {
             type: Sequelize.TIME, allowNull: false,
             validate: {
                 notEmpty: {
-                    msg: "This field is required."
+                    msg: "error.emptyString"
                 },
                 is: {
                     args: /^(([01]?[0-9]|2[0-3]):[0-5][0-9])(:[0-5][0-9])?$/,
-                    msg: "This field should be time"
+                    msg: "error.notATime"
                 }
             }
         },
@@ -56,18 +56,18 @@ const ServiceAppointment = sequelize.define('ServiceAppointment', {
             type: Sequelize.INTEGER, allowNull: false,
             validate: {
                 notEmpty: {
-                    msg: "This field is required."
+                    msg: "error.emptyString"
                 },
                 isNumeric: {
-                    msg: "Should be a number"
+                    msg: "error.notANumber"
                 },
                 min: {
                     args: [0],
-                    msg: "This field must be between 0 and 100"
+                    msg: "error.number0to100"
                 },
                 max: {
                     args: [100],
-                    msg: "This field must be between 0 and 100"
+                    msg: "error.number0to100"
                 }
             }
         }

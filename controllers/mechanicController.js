@@ -5,7 +5,8 @@ exports.showMechanicList = (req, res, next) => {
         .then(mechs => {
             res.render('pages/mechanics/list', {
                 mechanics: mechs,
-                navLocation: "mechanics"
+                navLocation: "mechanics",
+                pageTitle: req.__('mechanic.list.pageTitle')
             });
         })
 
@@ -16,9 +17,9 @@ exports.showMechanicList = (req, res, next) => {
 exports.showAddMechanicForm = (req, res, next) => {
     res.render('pages/mechanics/form', {
         mechanic: {},
-        pageTitle: 'New mechanic',
+        pageTitle: req.__('mechanic.form.add.pageTitle'),
         formMode: 'createNew',
-        btnLabel: 'Add Mechanic',
+        btnLabel: req.__('mechanic.form.add.btnLabel'),
         formAction: '/mechanics/add',
         navLocation: "mechanics",
         validationErrors: []
@@ -32,9 +33,9 @@ exports.showEditMechanicForm = (req, res, next) => {
         .then(mechanic => {
                 res.render('pages/mechanics/form', {
                     mechanic: mechanic,
-                    pageTitle: 'Edit mechanic',
+                    pageTitle: req.__('mechanic.form.edit.pageTitle'),
                     formMode: 'edit',
-                    btnLabel: 'Edit Mechanic',
+                    btnLabel: req.__('mechanic.form.edit.btnLabel'),
                     formAction: '/mechanics/edit',
                     navLocation: "mechanics",
                     validationErrors: []
@@ -50,7 +51,7 @@ exports.showMechanicDetails = (req, res, next) => {
         .then(mechanic => {
                 res.render('pages/mechanics/form', {
                     mechanic: mechanic,
-                    pageTitle: 'Mechanic details',
+                    pageTitle: req.__('mechanic.form.details.pageTitle'),
                     formMode: 'showDetails',
                     formAction: '',
                     navLocation: "mechanics",
@@ -70,9 +71,9 @@ exports.addMechanic = (req, res, next) => {
 
             res.render('pages/mechanics/form', {
                 mechanic: mechData,
-                pageTitle: "Adding a mechanic",
+                pageTitle: req.__('mechanic.form.add.pageTitle'),
                 formMode: "createNew",
-                btnLabel: 'Add mechanic',
+                btnLabel: req.__('mechanic.form.add.btnLabel'),
                 formAction: '/mechanics/add',
                 navLocation: "mechanics",
                 validationErrors: err.errors
@@ -93,10 +94,10 @@ exports.updateMechanic = (req, res, next) => {
                         mechData.service=result.service;
                         res.render('pages/mechanics/form', {
                             mechanic: mechData,
-                            pageTitle: 'Edit mechanic',
+                            pageTitle: req.__('mechanic.form.edit.pageTitle'),
                             formMode: 'edit',
                             btnLabel: 'Edit Mechanic',
-                            formAction: '/mechanics/edit',
+                            formAction: req.__('mechanic.form.edit.btnLabel'),
                             navLocation: "mechanics",
                             validationErrors: err.errors
                         })

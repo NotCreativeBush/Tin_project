@@ -6,7 +6,8 @@ exports.showPartsOrderList = (req, res, next) => {
         .then(parts => {
             res.render('pages/PartsOrder/list', {
                 partsOrder: parts,
-                navLocation: 'partsOrder'
+                navLocation: 'partsOrder',
+                pageTitle: req.__('partsOrder.list.pageTitle')
             });
         });
 
@@ -22,11 +23,11 @@ exports.showAddPartsOrderForm = (req, res, next) => {
             res.render('pages/PartsOrder/form', {
                 partsOrder: {},
 
-                pageTitle: 'New Parts Order',
+                pageTitle: req.__('partsOrder.form.add.pageTitle'),
                 formMode: 'createNew',
                 allMechanics: allMechanics,
 
-                btnLabel: 'Add Parts Order',
+                btnLabel: req.__('partsOrder.form.add.btnLabel'),
 
                 formAction: '/partsOrder/add',
                 navLocation: 'partsOrder',
@@ -50,9 +51,9 @@ exports.showEditPartsOrderForm = (req, res, next) => {
 
                 res.render('pages/PartsOrder/form', {
                     partsOrder: partsOrder,
-                    pageTitle: 'Edit Parts Order',
+                    pageTitle: req.__('partsOrder.form.edit.pageTitle'),
                     formMode: 'edit',
-                    btnLabel: 'Edit Parts Order',
+                    btnLabel: req.__('partsOrder.form.edit.btnLabel'),
                     allMechanics: allMechanics,
 
                     formAction: '/partsOrder/edit',
@@ -75,7 +76,7 @@ exports.showPartsOrderDetails = (req, res, next) => {
         .then(partsOrder => {
                 res.render('pages/PartsOrder/form', {
                     partsOrder: partsOrder,
-                    pageTitle: 'Parts Order details',
+                    pageTitle: req.__('partsOrder.form.details.pageTitle'),
                     formMode: 'showDetails',
                     formAction: '',
                     navLocation: 'partsOrder',
@@ -91,7 +92,8 @@ exports.showPartsOrderListMechanic = (req, res, next) => {
         .then(parts => {
             res.render('pages/PartsOrder/list', {
                 partsOrder: parts,
-                navLocation: 'partsOrder'
+                navLocation: 'partsOrder',
+                pageTitle: req.__('partsOrder.list.pageTitle')
             });
         });
 
@@ -113,11 +115,11 @@ exports.addPartsOrder = (req, res, next) => {
                     res.render('pages/PartsOrder/form', {
                         partsOrder: partData,
 
-                        pageTitle: 'New Parts Order',
+                        pageTitle: req.__('partsOrder.form.add.pageTitle'),
                         formMode: 'createNew',
 
 
-                        btnLabel: 'Add Parts Order',
+                        btnLabel: req.__('partsOrder.form.add.btnLabel'),
                         allMechanics: allMechanics,
                         formAction: '/partsOrder/add',
                         navLocation: 'partsOrder',
@@ -141,11 +143,11 @@ exports.updatePartsOrder = (req, res, next) => {
                 res.render('pages/PartsOrder/form', {
                     partOrder: partData,
 
-                    pageTitle: 'Edit Parts Order',
+                    pageTitle: req.__('partsOrder.form.edit.pageTitle'),
                     formMode: 'edit',
                     allMechanics: allMechanics,
 
-                    btnLabel: 'Edit Parts Order',
+                    btnLabel: req.__('partsOrder.form.edit.btnLabel'),
 
                     formAction: '/partsOrder/edit',
                     navLocation: 'partsOrder',
@@ -156,9 +158,17 @@ exports.updatePartsOrder = (req, res, next) => {
         });
 }
 
-exports.changePartsOrderStatus = (req, res, next) =>{
+exports.changePartsOrderStatusTrue = (req, res, next) =>{
     const partId = req.params.partsOrderId;
-    PartsOrderRepository.changePartsOrderStatus(partId)
+    PartsOrderRepository.changePartsOrderStatusTrue(partId)
+        .then(()=>{
+            res.redirect('/partsOrder/mechaniclist');
+        });
+};
+
+exports.changePartsOrderStatusFalse = (req, res, next) =>{
+    const partId = req.params.partsOrderId;
+    PartsOrderRepository.changePartsOrderStatusFalse(partId)
         .then(()=>{
             res.redirect('/partsOrder/mechaniclist');
         });

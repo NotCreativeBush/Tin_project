@@ -6,7 +6,8 @@ exports.showServiceAppointmentList = (req, res, next) => {
         .then(appts => {
             res.render('pages/ServiceAppointment/list', {
                 serviceAppointment: appts,
-                navLocation: 'serviceappointment'
+                navLocation: 'serviceappointment',
+                pageTitle: req.__('serviceappointment.list.pageTitle')
             });
         });
 
@@ -26,11 +27,11 @@ exports.showAddServiceAppointmentForm = (req, res, next) => {
             res.render('pages/ServiceAppointment/form', {
                 serviceAppointment: {},
 
-                pageTitle: 'New Service Appointment',
+                pageTitle: req.__('serviceappointment.form.add.pageTitle'),
                 formMode: 'createNew',
                 allMechanics: allMechanics,
                 allCars: allCars,
-                btnLabel: 'Add Service Appointment',
+                btnLabel: req.__('serviceappointment.form.add.btnLabel'),
 
                 formAction: '/serviceappointment/add',
                 navLocation: 'serviceappointment',
@@ -57,9 +58,9 @@ exports.showEditServiceAppointmentForm = (req, res, next) => {
 
                 res.render('pages/ServiceAppointment/form', {
                     serviceAppointment: serviceappointment,
-                    pageTitle: 'Edit Service Appointment',
+                    pageTitle: req.__('serviceappointment.form.edit.pageTitle'),
                     formMode: 'edit',
-                    btnLabel: 'Edit Service Appointment',
+                    btnLabel: req.__('serviceappointment.form.edit.btnLabel'),
                     allMechanics: allMechanics,
                     allCars: allCars,
                     formAction: '/serviceappointment/edit',
@@ -85,7 +86,7 @@ exports.showServiceAppointmentDetails = (req, res, next) => {
         .then(serviceappointment => {
                 res.render('pages/ServiceAppointment/form', {
                     serviceAppointment: serviceappointment,
-                    pageTitle: 'Service Appointment details',
+                    pageTitle: req.__('serviceappointment.form.details.pageTitle'),
                     formMode: 'showDetails',
                     formAction: '',
                     navLocation: 'serviceappointment',
@@ -114,11 +115,11 @@ exports.addServiceAppointment = (req, res, next) => {
                     res.render('pages/ServiceAppointment/form', {
                         serviceAppointment: apptData,
 
-                        pageTitle: 'New Service Appointment',
+                        pageTitle: req.__('serviceappointment.form.add.pageTitle'),
                         formMode: 'createNew',
 
                         allCars: allCars,
-                        btnLabel: 'Add Service Appointment',
+                        btnLabel: req.__('serviceappointment.form.add.btnLabel'),
                         allMechanics: allMechanics,
                         formAction: '/serviceappointment/add',
                         navLocation: 'serviceappointment',
@@ -146,11 +147,11 @@ exports.updateServiceAppointment = (req, res, next) => {
                 res.render('pages/ServiceAppointment/form', {
                     serviceAppointment: apptData,
 
-                    pageTitle: 'Edit Service Appointment',
+                    pageTitle: req.__('serviceappointment.form.edit.pageTitle'),
                     formMode: 'edit',
                     allMechanics: allMechanics,
                     allCars: allCars,
-                    btnLabel: 'Edit Service Appointment',
+                    btnLabel: req.__('serviceappointment.form.edit.btnLabel'),
 
                     formAction: '/serviceappointment/edit',
                     navLocation: 'serviceappointment',

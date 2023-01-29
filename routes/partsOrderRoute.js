@@ -13,8 +13,8 @@ router.get('/details/:partsOrderId', authUtil.permitAuthenticatedManager, partsO
 
 router.get('/mechaniclist', partsOrderController.showPartsOrderListMechanic);
 
-router.get('/editstatus/:partsOrderId', partsOrderController.changePartsOrderStatus);
-
+router.get('/editstatustrue/:partsOrderId', partsOrderController.changePartsOrderStatusTrue);
+router.get('/editstatusfalse/:partsOrderId', partsOrderController.changePartsOrderStatusFalse);
 
 router.post('/add', authUtil.permitAuthenticatedManager,partsOrderController.addPartsOrder);
 router.post('/edit',  authUtil.permitAuthenticatedManager,partsOrderController.updatePartsOrder);

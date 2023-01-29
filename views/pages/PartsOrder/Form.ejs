@@ -1,9 +1,26 @@
 <%- include('../../fragment/header.ejs') %>
 <main>
-    <script type="application/javascript" src="/js/validationServiceAppointmentForm.js"></script>
+    <script type="application/javascript" src="/js/validationPartsOrderForm.js"></script>
     <h2><%= pageTitle %></h2>
     <p>Fields with * are required.</p>
     <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+
+        <div style="display: none">
+            <span id="error-emptyString"><%= __('error.emptyString')%></span>
+            <span id="error-stringLen2to60"><%= __('error.stringLen2to60')%></span>
+            <span id="error-stringLen2to10"><%= __('error.stringLen2to10')%></span>
+            <span id="error-notAPhone"><%= __('error.notAPhone')%></span>
+            <span id="error-notANumber"><%= __('error.notANumber')%></span>
+            <span id="error-number200to1000000"><%= __('error.number200to1000000')%></span>
+            <span id="error-notADate"><%= __('error.notADate')%></span>
+            <span id="error-notATime"><%= __('error.notATime')%></span>
+            <span id="error-number0to100"><%= __('error.number0to100')%></span>
+            <span id="error-number1to1000"><%= __('error.number1to1000')%></span>
+            <span id="error-summary"><%= __('error.summary')%></span>
+        </div>
+
+
+
         <input type="hidden" name="_id" value="<%= partsOrder._id %>">
 
 
@@ -11,9 +28,9 @@
         <input type="text" name="partName" id="partName" value="<%= partsOrder.partName %>" placeholder="2-60 characters"
                 <%= (formMode == 'showDetails') ? 'disabled' : '' %>
                class="<%= validationErrors.find(e=>e.path.includes('partName')) ? 'error-input' : ''%>">
-        <span id="errorFirstName" class="error-text">
+        <span id="errorPartName" class="error-text">
             <% if(validationErrors.find(e => e.path.includes('partName'))) { %>
-                <%= validationErrors.find(e => e.path.includes('partName')).message %>
+                <%= __(validationErrors.find(e => e.path.includes('partName')).message) %>
             <% } %>
         </span>
 
@@ -28,7 +45,7 @@
         </select>
         <span id="errorMechanic" class="error-text">
             <% if(validationErrors.find(e => e.path.includes('mechanic_id'))) { %>
-                <%= validationErrors.find(e => e.path.includes('mechanic_id')).message %>
+                <%= __(validationErrors.find(e => e.path.includes('mechanic_id')).message) %>
             <% } %>
         </span>
 
@@ -36,9 +53,9 @@
         <input type="text" name="amount" id="amount" value="<%= partsOrder.amount %>" placeholder="1-1000"
                 <%= (formMode == 'showDetails') ? 'disabled' : '' %>
                class="<%= validationErrors.find(e => e.path.includes('amount')) ? 'error-input' : '' %>">
-        <span id="errorPrice" class="error-text">
+        <span id="errorAmount" class="error-text">
             <% if(validationErrors.find(e => e.path.includes('amount'))) { %>
-                <%= validationErrors.find(e => e.path.includes('amount')).message %>
+                <%= __(validationErrors.find(e => e.path.includes('amount')).message) %>
             <% } %>
         </span>
 
@@ -46,9 +63,9 @@
         <input type="checkbox" name="status" id="status" value="true"
                 <%= (formMode == 'showDetails') ? 'disabled' : '' %>
                class="<%= validationErrors.find(e => e.path.includes('status')) ? 'error-input' : '' %>">
-        <span id="errorDate" class="error-text">
+        <span id="errorStatus" class="error-text">
             <% if(validationErrors.find(e => e.path.includes('status'))) { %>
-                <%= validationErrors.find(e => e.path.includes('status')).message %>
+                <%= __(validationErrors.find(e => e.path.includes('status')).message) %>
             <% } %>
         </span>
 

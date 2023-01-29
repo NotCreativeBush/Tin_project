@@ -1,19 +1,15 @@
 {
 	"main-page": {
 		"content": "Strona główna",
-		"header1": "main-page.header1"
+		"header1": "Serwis samochodowy"
 	},
 	"nav": {
-		"main-page": "Strona główna",
-		"employees": "Pracownicy",
-		"departments": "Departamenty",
-		"employments": "Zatrudnienie",
-		"main": "nav.main",
-		"cars": "nav.cars",
-		"partsOrder": "nav.partsOrder",
-		"serviceappointment": "nav.serviceappointment",
-		"mechanics": "nav.mechanics",
-		"managers": "nav.managers"
+		"main": "Strona główna",
+		"cars": "Samochód",
+		"mechanics": "Mechanik",
+		"serviceappointment": "Spotkanie serwisowe",
+		"managers": "Menedżerowie",
+		"partsOrder": "Zamówienia części"
 	},
 	"list": {
 		"actions": {
@@ -30,48 +26,228 @@
 			"cancel": "Anuluj"
 		}
 	},
-	"emp": {
+	"car": {
 		"fields": {
-			"firstName": "Imię",
-			"lastName": "Nazwisko",
-			"email": "Email"
+			"manufacturer": "Producent",
+			"model": "Model",
+			"plates": "Talerze(wrong translation)",
+			"phone": "Telefon klienta",
+			"name": "Imię klienta",
+			"actions": "Akcje"
 		},
 		"list": {
-			"title": "Pracownicy",
-			"addNew": "Dodaj nowego pracownika",
-			"noData": "Brak pracowników w bazie",
-			"pageTitle": "Lista pracowników"
+			"title": "Samochody",
+			"addNew": "Dodaj nowy samochód",
+			"noData": "Brak samochodów w bazie danych",
+			"pageTitle": "Lista samochodów"
 		},
 		"form": {
-			"employment": "Historia zatrudnienia",
+			"services": "Terminy usług",
 			"add": {
-				"pageTitle": "Dodawanie pracownika",
-				"btnLabel": "Dodaj pracownika",
+				"pageTitle": "Dodanie nowego samochodu",
+				"btnLabel": "Dodaj samochód",
 				"confirm": {
-					"header": "Potwierdzenie operacji",
-					"text": "Pomyślnie dodano pracownika"
+					"header": "Potwierdzenie",
+					"text": "Nowy samochód został pomyślnie utworzony"
 				}
 			},
 			"edit": {
-				"pageTitle": "Edycja pracownika",
+				"pageTitle": "Edycja samochodu",
 				"btnLabel": "Zapisz zmiany",
 				"confirm": {
-					"header": "Potwierdzenie operacji",
-					"text": "Pomyślnie zaktualizowano pracownika"
+					"header": "Potwierdzenie",
+					"text": "Samochód został pomyślnie zaktualizowany"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły samochodu",
+				"btnLabel": "Go to edit",
+				"confirm": {
+					"header": "Potwierdzenie",
+					"text": "The car has been successfully updated"
+				}
+			}
+		}
+	},
+	"manager": {
+		"fields": {
+			"name": "Imię",
+			"surname": "Nazwisko",
+			"salary": "Salary",
+			"phone": "Pensja"
+		},
+		"list": {
+			"title": "Menedżerowie",
+			"addNew": "Dodaj nowego menedżera",
+			"noData": "Brak menedżerów w bazie danych",
+			"pageTitle": "Lista menedżerów"
+		},
+		"form": {
+			"services": "Terminy usług",
+			"add": {
+				"pageTitle": "Dodanie nowego menedżera",
+				"btnLabel": "Dodaj menedżera",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new manager has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja menedżera",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The manager has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Dane kierownika",
+				"btnLabel": "Przejdź do edycji",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The manager has been successfully updated"
+				}
+			}
+		}
+	},
+	"mechanic": {
+		"fields": {
+			"name": "Imię",
+			"surname": "Nazwisko",
+			"salary": "Salary",
+			"phone": "Pensja"
+		},
+		"list": {
+			"title": "Mechanik",
+			"addNew": "Dodaj nową mechanikę",
+			"noData": "Brak mechaniki w bazie danych",
+			"pageTitle": "Lista mechaników"
+		},
+		"form": {
+			"services": "Terminy usług",
+			"add": {
+				"pageTitle": "Dodanie nowej mechaniki",
+				"btnLabel": "Dodaj mechanika",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new manager has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja mechanika",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The mechanic has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły mechanika",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The mechanic has been successfully updated"
 				}
 			}
 		}
 	},
 	"partsOrder": {
 		"fields": {
-			"partname": "partsOrder.fields.partname",
-			"mechanic": "partsOrder.fields.mechanic",
-			"amount": "partsOrder.fields.amount",
-			"status": "partsOrder.fields.status"
+			"partname": "Częściowe imię",
+			"mechanic": "Mechanik",
+			"amount": "Ilość",
+			"status": "Status"
 		},
 		"list": {
-			"title": "partsOrder.list.title",
-			"addNew": "partsOrder.list.addNew"
+			"title": "Zamówienia części",
+			"addNew": "Dodaj nowe zamówienie na części",
+			"noData": "Brak zamówień na części w bazie danych",
+			"pageTitle": "Lista zamówień częściowych",
+			"statustrue": "Zmień stan na prawdziwy",
+			"statusfalse": "Zmień stan na fałszywy"
+		},
+		"form": {
+			"services": "Service appointments",
+			"add": {
+				"pageTitle": "Dodanie nowego zamówienia części",
+				"btnLabel": "Dodaj zamówienie na części",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new part order has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja zamówienia części",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The part order has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły zamówienia częściowego",
+				"btnLabel": "przejdź do edycji",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The part order has been successfully updated"
+				}
+			}
 		}
+	},
+	"serviceappointment": {
+		"fields": {
+			"customername": "Nazwa klienta",
+			"mechanicname": "Nazwa mechanika",
+			"mechanicsurname": "Mechanik Nazwisko",
+			"price": "Cena",
+			"Date": "Date",
+			"Time": "Czas",
+			"Discount": "Rabat"
+		},
+		"list": {
+			"title": "Spotkanie serwisowe",
+			"addNew": "Dodaj nowe spotkanie serwisowe",
+			"noData": "Brak wizyt serwisowych w bazie danych",
+			"pageTitle": "Lista terminów usług"
+		},
+		"form": {
+			"add": {
+				"pageTitle": "Dodanie nowego terminu serwisu",
+				"btnLabel": "Dodaj wizytę serwisową",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new service appointment has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja wizyty serwisowej",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The service appointment has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły wizyty serwisowej",
+				"btnLabel": "przejdź do edycji",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The service appointment has been successfully updated"
+				}
+			}
+		}
+	},
+	"error": {
+		"emptyString": "To pole jest wymagane.",
+		"stringLen2to60": "Pole powinno zawierać od 2 do 60 znaków.",
+		"stringLen2to10": "Pole powinno zawierać od 2 do 10 znaków.",
+		"notAPhone": "Powinien być numer telefonu",
+		"notANumber": "Pole powinno być liczbą",
+		"number200to1000000": "To pole musi zawierać się w przedziale od 200 do 1 000 000",
+		"notADate": "Powinna być randka",
+		"notATime": "To pole powinno być czasem",
+		"number0to100": "To pole musi zawierać się w przedziale od 0 do 100",
+		"number1to1000": "To pole musi zawierać się w przedziale od 1 do 1000",
+		"summary": "Formularz zawiera błędy."
 	}
 }

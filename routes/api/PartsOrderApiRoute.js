@@ -7,7 +7,6 @@ router.get('/:partsOrderId', partsOrderApiController.getPartsOrderById);
 router.post('/', partsOrderApiController.createPartsOrder);
 router.put('/:partsOrderId', partsOrderApiController.updatePartsOrder);
 router.delete('/:partsOrderId', partsOrderApiController.deletePartsOrder);
-router.put('/:partsOrderId', partsOrderApiController.changePartsOrderStatus);
 
 
 module.exports = router;

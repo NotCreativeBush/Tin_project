@@ -57,10 +57,18 @@ exports.updatePartsOrder = (partId, partData) => {
     return PartsOrder.update(partData, {where: {_id: partId}});
 };
 
-exports.changePartsOrderStatus = (partId)=>{
+exports.changePartsOrderStatusTrue = (partId)=>{
 
     return PartsOrder.update({
-        status: "true"
+        status: true
+    }, {
+        where: {_id: partId}
+    });
+}
+exports.changePartsOrderStatusFalse = (partId)=>{
+
+    return PartsOrder.update({
+        status: false
     }, {
         where: {_id: partId}
     });

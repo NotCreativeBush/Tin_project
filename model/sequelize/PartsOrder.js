@@ -8,37 +8,37 @@ const PartsOrder = sequelize.define('PartsOrder', {
         type: Sequelize.STRING, allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             len: {
                 args: [2, 60],
-                msg: "The field should contain between 2 and 60 characters."
+                msg: "error.stringLen2to60"
             },
         }
     }, mechanic_id: {
         type: Sequelize.INTEGER, allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
-            isNumeric: {msg: "Should be a number"}
+            isNumeric: {msg: "error.notANumber"}
         }
     }, amount: {
         type: Sequelize.INTEGER, allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             isNumeric: {
-                msg: "The field should be a number"
+                msg: "error.notANumber"
             },
             min: {
                 args: [1],
-                msg: "This field must be between 1 and 1,000"
+                msg: "error.number1to1000"
             },
             max: {
                 args: [1000],
-                msg: "This field must be between 1 and 1,000"
+                msg: "error.number1to1000"
             },
         }
     }, status: {

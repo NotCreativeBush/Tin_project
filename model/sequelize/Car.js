@@ -12,11 +12,11 @@ const Car = sequelize.define('Car', {
         type: Sequelize.STRING, allowNull: false,
         validate:{
             notEmpty:{
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             len:{
                 args: [2,60],
-                msg: "The field should contain between 2 and 60 characters."
+                msg: "error.stringLen2to60"
             },
         }
     },
@@ -24,11 +24,11 @@ const Car = sequelize.define('Car', {
         type: Sequelize.STRING, allowNull: false,
         validate:{
             notEmpty:{
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             len:{
                 args: [2,60],
-                msg: "The field should contain between 2 and 60 characters."
+                msg: "error.stringLen2to60"
             },
         }
     },
@@ -36,11 +36,11 @@ const Car = sequelize.define('Car', {
         type: Sequelize.STRING, allowNull: false,
         validate:{
             notEmpty:{
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             len:{
                 args: [2,10],
-                msg: "The field should contain between 2 and 10 characters."
+                msg: "error.stringLen2to10"
             },
         }
     },
@@ -48,11 +48,11 @@ const Car = sequelize.define('Car', {
         type: Sequelize.STRING, allowNull: false,
         validate:{
             notEmpty:{
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             is: {
                 args: /^(\+?)(\d{11}|\d{9})$/,
-                msg: "Should be a phone number"
+                msg: "error.notAPhone"
             }
 
         }
@@ -61,11 +61,11 @@ const Car = sequelize.define('Car', {
         type: Sequelize.STRING, allowNull: false,
         validate:{
             notEmpty:{
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             len:{
                 args: [2,60],
-                msg: "The field should contain between 2 and 60 characters."
+                msg: "error.stringLen2to60"
             },
         }
     }

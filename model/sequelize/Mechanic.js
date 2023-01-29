@@ -8,51 +8,51 @@ const Mechanic = sequelize.define('Mechanic', {
         type: Sequelize.STRING, allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             len: {
                 args: [2, 60],
-                msg: "The field should contain between 2 and 60 characters."
+                msg: "error.stringLen2to60"
             },
         }
     }, lastName: {
         type: Sequelize.STRING, allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             len: {
                 args: [2, 60],
-                msg: "The field should contain between 2 and 60 characters."
+                msg: "error.stringLen2to60"
             },
         }
     }, salary: {
         type: Sequelize.INTEGER, allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             isNumeric: {
-                msg: "The field should be a number"
+                msg: "error.notANumber"
             },
             min: {
                 args: [200],
-                msg: "This field must be between 200 and 1,000,000"
+                msg: "error.number200to1000000"
             },
             max: {
                 args: [1000000],
-                msg: "This field must be between 200 and 1,000,000"
+                msg: "error.number200to1000000"
             },
         }
     }, phone: {
         type: Sequelize.STRING, allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.emptyString"
             },
             is: {
                 args: /^(\+?)(\d{11}|\d{9})$/,
-                msg: "Should be a phone number"
+                msg: "error.notAPhone"
             }
 
         }
@@ -63,7 +63,10 @@ const Mechanic = sequelize.define('Mechanic', {
         allowNull: false,
         validate: {
             notEmpty:{
-                msg:"This field is required"
+                msg:"error.emptyString"
+            },len: {
+                args: [2, 60],
+                msg: "error.stringLen2to60"
             }
 
         }

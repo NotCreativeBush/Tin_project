@@ -33,9 +33,13 @@
                             </li>
                         <% } else { %>
                             <li>
-                                <a href="/partsOrder/editstatus/<%= part._id %>"
-                                   class="list-actions-button-edit"><%= __('partsOrder.list.statusedit') %></a>
+                                <a href="/partsOrder/editstatustrue/<%= part._id %>"
+                                   class="list-actions-button-details"><%= __('partsOrder.list.statustrue') %></a>
                             </li>
+                                <li>
+                                    <a href="/partsOrder/editstatusfalse/<%= part._id %>"
+                                       class="list-actions-button-delete"><%= __('partsOrder.list.statusfalse') %></a>
+                                </li>
                         <% } %>
                     </ul>
                 </td>
