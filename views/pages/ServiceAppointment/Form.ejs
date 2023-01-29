@@ -101,13 +101,13 @@
         <div class="form-buttons">
             <p id="errorSummary" class="error-text"></p>
             <% if (formMode == 'showDetails') { %>
-                <a href="/serviceappointment/edit/<%= serviceAppointment._id %>" class="button-edit">Edit</a>
-                <a class="form-button-cancel" href="/serviceappointment">Return</a>
+                <a href="/serviceappointment/edit/<%= serviceAppointment._id %>" class="button-edit"><%= __('form.actions.edit')%></a>
+                <a class="form-button-cancel" href="/serviceappointment"><%= __('form.actions.return')%></a>
             <% } else { %>
 
                 <input class="form-button-submit" type="submit" value="<%= btnLabel %>">
                 <a class="form-button-cancel"
-                   href="/serviceappointment">Cancel</a>
+                   href="/serviceappointment"><%= __('form.actions.cancel')%></a>
             <% } %>
         </div>
     </form>

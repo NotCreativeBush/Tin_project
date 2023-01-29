@@ -1,7 +1,8 @@
 {
 	"main-page": {
 		"content": "Strona główna",
-		"header1": "Serwis samochodowy"
+		"header1": "Serwis samochodowy",
+		"loggedas": "Jesteś zalogowany jako: "
 	},
 	"nav": {
 		"main": "Strona główna",

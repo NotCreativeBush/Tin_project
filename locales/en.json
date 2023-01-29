@@ -1,7 +1,8 @@
 {
   "main-page": {
     "content": "Main Page",
-    "header1": "Car Service"
+    "header1": "Car Service",
+    "loggedas": "You're logged in as: "
   },
   "nav": {
     "main": "Main page",

@@ -54,6 +54,6 @@
         </form>
     </div>
 <% } else { %>
-    <span>You are logged in as: <%= loggedUser.firstName + " " + loggedUser.lastName + " " %></span>
+    <span><%= __('main-page.loggedas')+loggedUser.firstName + " " + loggedUser.lastName + " " %></span>
     <a href="/logout">Sign out</a>
 <% } %>
